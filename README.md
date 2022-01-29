@@ -3,7 +3,10 @@ An Ecommerce Website made for DVM recruitment task
 1) Has Bootstrap theme installed
 2) Working vendor/customer models
 3) Implemented signup through google accounts
-4) Integrated Sendgrid Email API for vendors
+4) Integrated Sendgrid Email API for vendor orders
+5) Uses PostgreSQL database
+6) Vendors can export CSV files for their sales
+
 
 Ecommerce Site at http://127.0.0.1:8000/ecommerce/
 
