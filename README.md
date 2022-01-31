@@ -8,7 +8,9 @@ An Ecommerce Website made for DVM recruitment task
 6) Vendors can export CSV files for their sales
 
 
-Ecommerce Site at http://127.0.0.1:8000/ecommerce/
+Ecommerce Site at http://127.0.0.1:8000/ecommerce/ if you're running locally
+
+Hosted on a Azure VPS (link will be added soon)
 
 create a file called keyconfig.py on DVM_task3/ with appropriate variable names
 
