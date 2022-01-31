@@ -8,10 +8,11 @@ from django.shortcuts import render
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView, ListView, View, UpdateView
 
+from DVM_task3.keyconfig import sendgrid_sender_email
 from ..decorators import customer_required
 from ..forms import CustomerSignUpForm, AddItemToCart, AddMoney, AddReview, AddShippingAddress
 from ..models import User, Customer, Item, Vendor, Cart, Review, Order, ShippingAddress, OrderedItems, WishList
-from DVM_task3.keyconfig import sendgrid_sender_email
+
 
 class CustomerSignUpView(CreateView):
     model = User
@@ -314,6 +315,7 @@ class CustomerItemReview(CreateView):
         return redirect('ecommerce:customer_item_details')
 
 
+@method_decorator([login_required, customer_required()], name='dispatch')
 class CustomerViewPrevOrders(ListView):
     model = Order
     template_name = 'ecommerce/customer/view_orders.html'
@@ -333,6 +335,7 @@ class CustomerViewPrevOrders(ListView):
         return context
 
 
+@method_decorator([login_required, customer_required()], name='dispatch')
 class CustomerShippingAddress(CreateView):
     model = ShippingAddress
     template_name = 'ecommerce/customer/address.html'
@@ -356,6 +359,7 @@ class CustomerShippingAddress(CreateView):
         return redirect('ecommerce:customer_dashboard')
 
 
+@method_decorator([login_required, customer_required()], name='dispatch')
 class CustomerWishList(ListView):
     model = WishList
     template_name = 'ecommerce/customer/wishlist.html'
