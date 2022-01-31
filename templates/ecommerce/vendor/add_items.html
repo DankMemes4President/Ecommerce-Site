@@ -52,11 +52,9 @@
             {% csrf_token %}
             {{ form|crispy }}
             <br>
-            <button type="submit" class="btn btn-success">Add</button>
+            <button type="submit" class="btn btn-success" name="add">Add</button>
             {% if item is not None %}
-                <a href="{% url 'ecommerce:vendor_delete_items' item %}">
-                    <button class="btn btn-danger">Delete</button>
-                </a>
+                <button class="btn btn-danger" name="delete">Delete</button>
             {% endif %}
         </form>
         <br>
@@ -68,28 +66,3 @@
         <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
     </footer>
 {% endblock content %}
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add Items</title>
-</head>
-<body>
-<form method="POST" enctype='multipart/form-data'>
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" name='mybtn2'>Add</button>
-    {% if item is not None %}
-        <a href="{% url 'ecommerce:vendor_delete_items' item %}">
-            <button>Delete</button>
-        </a>
-    {% endif %}
-</form>
-<br>
-<a href='{% url 'ecommerce:vendor_dashboard' %}'>Back to Dashboard</a>
-</body>
-</html>

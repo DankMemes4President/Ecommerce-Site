@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.shortcuts import redirect
 from django.shortcuts import render, reverse
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView, ListView, UpdateView, DeleteView
+from django.views.generic import CreateView, ListView, UpdateView
 from xlwt import Workbook
 
 from ..decorators import vendor_required
@@ -110,19 +110,15 @@ class VendorEditItems(UpdateView):
     def get_success_url(self, *args, **kwargs):
         return reverse('ecommerce:vendor_dashboard')
 
-
-@method_decorator([login_required, vendor_required()], name='dispatch')
-class VendorDeleteItems(DeleteView):
-    model = Item
-    template_name = 'ecommerce/vendor/delete_items.html'
-
-    def get_object(self, queryset=None):
+    def post(self, request, *args, **kwargs):
         vendor = self.request.user.vendor
         item = vendor.item_set.get(item_name=self.kwargs['item'])
-        return item
-
-    def get_success_url(self):
-        return reverse('ecommerce:vendor_dashboard')
+        if 'delete' in request.POST:
+            item.delete()
+        elif 'add' in request.POST:
+            item.item_quantity = request.POST['item_quantity']
+            item.save()
+        return redirect('ecommerce:vendor_dashboard')
 
 
 class VendorViewOrders(ListView):

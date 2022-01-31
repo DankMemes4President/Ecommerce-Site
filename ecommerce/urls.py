@@ -11,7 +11,6 @@ urlpatterns = [
         path('', vendor.VendorDashboard.as_view(), name='vendor_dashboard'),
         path('items/add', vendor.VendorAddItems.as_view(), name='vendor_add_items'),
         path('items/<str:item>/edit', vendor.VendorEditItems.as_view(), name='vendor_edit_items'),
-        path('items/<str:item>/delete', vendor.VendorDeleteItems.as_view(), name='vendor_delete_items'),
         path('orders', vendor.VendorViewOrders.as_view(), name='vendor_view_orders'),
         path('orders/export', vendor.vendor_order_generate_csv, name='vendor_order_generate_csv'),
     ]))),
