@@ -20,6 +20,11 @@ from django.urls import path, include
 
 from ecommerce.views import ecommerce_home, vendor, customer
 
+handler404 = 'ecommerce.views.ecommerce_home.custom_page_not_found_view'
+handler500 = 'ecommerce.views.ecommerce_home.custom_error_view'
+handler403 = 'ecommerce.views.ecommerce_home.custom_permission_denied_view'
+handler400 = 'ecommerce.views.ecommerce_home.custom_bad_request_view'
+
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('ecommerce/', include('ecommerce.urls')),

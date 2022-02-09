@@ -26,9 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = f'{django_secret_key}'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -66,7 +66,7 @@ ROOT_URLCONF = 'DVM_task3.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'templates/ecommerce/']
+        'DIRS': [BASE_DIR / 'templates', BASE_DIR / 'templates/ecommerce/', BASE_DIR / 'templates/ecommerce/errors/']
         ,
         'APP_DIRS': True,
         'OPTIONS': {

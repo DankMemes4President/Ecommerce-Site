@@ -21,6 +21,15 @@
             </div>
         </div>
     </header>
+    <div>
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <label class="{{ message.tags }} w-100">{{ message }}</label>
+            {% endfor %}
+        </div>
+    {% endif %}
+    </div>
     <title>Customer Login</title>
     <div class="col-md-4 offset-md-4">
         <br>
